@@ -1,0 +1,22 @@
+-- Assuming the timer is a global variable
+local timer = 10  -- starting timer value
+
+-- Function to simulate the timer countdown
+function startTimer()
+    while timer > 0 do
+        print("Time left: " .. timer)
+        timer = timer - 1
+        os.execute("sleep 1")  -- Wait for 1 second (for simulation)
+    end
+    print("Timer ended!")
+end
+
+-- Function to skip the timer
+function skipTimer()
+    timer = 0
+    print("Timer skipped!")
+end
+
+-- Example Usage
+startTimer()  -- Starts the timer countdown
+skipTimer()   -- Skips the timer (sets it to 0)
