@@ -1,23 +1,23 @@
--- Assuming there's a global timer for the match
-local matchTimer = 300  -- For example, 5 minutes per match (300 seconds)
+-- Initial timer set to 2:30 (2 minutes 30 seconds) or 150 seconds
+local timer = 150
 
--- Function to start the match timer (countdown)
-function startMatchTimer()
-    while matchTimer > 0 do
-        print("Match time left: " .. matchTimer)
-        matchTimer = matchTimer - 1
-        os.execute("sleep 1")  -- Simulate 1 second passing
+-- Function to start the timer countdown
+function startTimer()
+    while timer > 0 do
+        print("Time left: " .. timer .. " seconds")
+        timer = timer - 1
+        os.execute("sleep 1")  -- Simulate 1 second passing (replace for actual game timing system)
     end
-    print("Match over!")
+    print("Timer reached zero!")
 end
 
--- Function to skip the entire match timer
-function skipMatchTimer()
-    matchTimer = 0
-    print("Match timer skipped! The match is over immediately.")
+-- Function to skip the timer
+function skipTimer()
+    timer = 0  -- Skip the timer by setting it to zero
+    print("Timer skipped! Ending immediately.")
 end
 
 -- Example Usage
-startMatchTimer()  -- Starts the match timer countdown
--- To skip the timer and end the match immediately:
-skipMatchTimer()   -- Immediately ends the match
+startTimer()  -- Starts the timer countdown
+-- If you want to skip the timer at any point:
+skipTimer()   -- Immediately ends the timer (sets it to 0)
