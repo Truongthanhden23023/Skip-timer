@@ -1,50 +1,23 @@
--- Assuming the timer is a global variable
-local timer = 10  -- starting timer value
+-- Assume there's a global variable controlling the timer during the game
+local gameTimer = 60  -- For example, 60 seconds for each round
 
 -- Function to simulate the timer countdown
-function startTimer()
-    while timer > 0 do
-        print("Time left: " .. timer)
-        timer = timer - 1
-        os.execute("sleep 1")  -- Wait for 1 second (for simulation)
+function startGameTimer()
+    while gameTimer > 0 do
+        print("Time left in game: " .. gameTimer)
+        gameTimer = gameTimer - 1
+        os.execute("sleep 1")  -- Simulate waiting 1 second (adjust for real timing in the game)
     end
-    print("Timer ended!")
+    print("Round over!")
 end
 
--- Function to skip the timer
-function skipTimer()
-    timer = 0
-    print("Timer skipped!")
+-- Function to skip the timer (set the game timer to 0 immediately)
+function skipGameTimer()
+    gameTimer = 0
+    print("Timer skipped! Round ends immediately.")
 end
 
--- Example Usage
-startTimer()  -- Starts the timer countdown
-skipTimer()   -- Skips the timer (sets it to 0)
-
--- Assuming the game has an inactivity timer that kicks players after a certain time
-local inactivityTimer = 300  -- 5 minutes for inactivity (example)
-local lastActivityTime = os.time()  -- Track the last time the player was active
-
--- Function that simulates player activity (resetting inactivity timer)
-function resetInactivityTimer()
-    lastActivityTime = os.time()  -- Update the last activity time
-    print("Player activity reset!")
-end
-
--- Function to simulate the inactivity timer check
-function checkInactivity()
-    local currentTime = os.time()
-    local elapsedTime = currentTime - lastActivityTime
-    if elapsedTime >= inactivityTimer then
-        print("Player kicked due to inactivity!")
-        -- Here you would add the logic to kick the player
-    else
-        print("Player is still active.")
-    end
-end
-
--- Example Usage (In a real case, you might call `resetInactivityTimer` on certain actions)
-resetInactivityTimer()  -- Reset timer on any activity
-checkInactivity()       -- Check if the player is about to be kicked
-
--- You could call resetInactivityTimer() periodically to keep the player from being kicked.
+-- Example Usage (Calling the functions as an example)
+startGameTimer()  -- Starts the timer countdown
+-- If you want to skip it during the game, call this:
+skipGameTimer()   -- Immediately ends the round or skips the timer
