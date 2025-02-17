@@ -20,3 +20,31 @@ end
 -- Example Usage
 startTimer()  -- Starts the timer countdown
 skipTimer()   -- Skips the timer (sets it to 0)
+
+-- Assuming the game has an inactivity timer that kicks players after a certain time
+local inactivityTimer = 300  -- 5 minutes for inactivity (example)
+local lastActivityTime = os.time()  -- Track the last time the player was active
+
+-- Function that simulates player activity (resetting inactivity timer)
+function resetInactivityTimer()
+    lastActivityTime = os.time()  -- Update the last activity time
+    print("Player activity reset!")
+end
+
+-- Function to simulate the inactivity timer check
+function checkInactivity()
+    local currentTime = os.time()
+    local elapsedTime = currentTime - lastActivityTime
+    if elapsedTime >= inactivityTimer then
+        print("Player kicked due to inactivity!")
+        -- Here you would add the logic to kick the player
+    else
+        print("Player is still active.")
+    end
+end
+
+-- Example Usage (In a real case, you might call `resetInactivityTimer` on certain actions)
+resetInactivityTimer()  -- Reset timer on any activity
+checkInactivity()       -- Check if the player is about to be kicked
+
+-- You could call resetInactivityTimer() periodically to keep the player from being kicked.
