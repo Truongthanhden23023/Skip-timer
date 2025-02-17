@@ -1,23 +1,23 @@
--- Assume there's a global variable controlling the timer during the game
-local gameTimer = 60  -- For example, 60 seconds for each round
+-- Assuming there's a global timer for the match
+local matchTimer = 300  -- For example, 5 minutes per match (300 seconds)
 
--- Function to simulate the timer countdown
-function startGameTimer()
-    while gameTimer > 0 do
-        print("Time left in game: " .. gameTimer)
-        gameTimer = gameTimer - 1
-        os.execute("sleep 1")  -- Simulate waiting 1 second (adjust for real timing in the game)
+-- Function to start the match timer (countdown)
+function startMatchTimer()
+    while matchTimer > 0 do
+        print("Match time left: " .. matchTimer)
+        matchTimer = matchTimer - 1
+        os.execute("sleep 1")  -- Simulate 1 second passing
     end
-    print("Round over!")
+    print("Match over!")
 end
 
--- Function to skip the timer (set the game timer to 0 immediately)
-function skipGameTimer()
-    gameTimer = 0
-    print("Timer skipped! Round ends immediately.")
+-- Function to skip the entire match timer
+function skipMatchTimer()
+    matchTimer = 0
+    print("Match timer skipped! The match is over immediately.")
 end
 
--- Example Usage (Calling the functions as an example)
-startGameTimer()  -- Starts the timer countdown
--- If you want to skip it during the game, call this:
-skipGameTimer()   -- Immediately ends the round or skips the timer
+-- Example Usage
+startMatchTimer()  -- Starts the match timer countdown
+-- To skip the timer and end the match immediately:
+skipMatchTimer()   -- Immediately ends the match
